@@ -1,20 +1,30 @@
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.math.MathContext;
-import java.math.RoundingMode;
-import java.util.Scanner;
+import java.util.*;
 
-public class Main {
+public class FibonacciLastDigit {
+    private static int getFibonacciLastDigitNaive(int n) {
+        if (n <= 1)
+            return n;
+
+        int previous = 0;
+        int current  = 1;
+
+        for (int i = 0; i < n - 1; ++i) {
+            int tmp_previous = previous;
+            previous = current;
+            current = tmp_previous + current;
+        }
+
+        return current % 10;
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        /*for (int i = 0; i < 100; i++){
-            System.out.println(fibonacciLoop(i) + "  " + lastDigitFibonacciLoop(i));
-        }*/
-        System.out.println(lastDigitFibonacciLoop(n));
-        //System.out.println(fibonacciRecursion(n));
+        int c = getFibonacciLastDigitNaive(n);
+        System.out.println(c);
     }
+
 
     public static long fibonacciRecursion(int n){
         if (n <= 1)

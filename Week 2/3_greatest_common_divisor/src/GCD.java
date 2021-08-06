@@ -1,31 +1,27 @@
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
-public class Main {
-
-    public static void main(String[] args) {
-        /*while (true){
-            Random random = new Random();
-            long a = random.nextLong();
-            long b = random.nextLong();
-            a = (a < 0) ? a * -1 : a;
-            b = (b < 0) ? b * -1 : b;
-            System.out.println(a + " " + b);
-            long result1 = euclidAlgorithmFast(a, b);
-            long result2 = euclidAlgorithmRecursion(a, b);
-            System.out.println(result1 + " " + result2);
-            if (result1 != result2){
-                System.out.println("WRONG");
-                break;
+public class GCD {
+    private static int gcd_naive(int a, int b) {
+        int current_gcd = 1;
+        for(int d = 2; d <= a && d <= b; ++d) {
+            if (a % d == 0 && b % d == 0) {
+                if (d > current_gcd) {
+                    current_gcd = d;
+                }
             }
-            System.out.println("OK");
-        }*/
+        }
 
-        Scanner scanner = new Scanner(System.in);
-        long a = scanner.nextLong();
-        long b = scanner.nextLong();
-        System.out.println(euclidAlgorithmRecursion(a, b));
+        return current_gcd;
     }
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+
+        System.out.println(gcd_naive(a, b));
+    }
+
 
     public static long euclidAlgorithmRecursion(long a, long b){
         long m = Math.max(a, b);
