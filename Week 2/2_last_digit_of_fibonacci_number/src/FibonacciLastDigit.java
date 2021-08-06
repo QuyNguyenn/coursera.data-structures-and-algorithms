@@ -18,19 +18,19 @@ public class FibonacciLastDigit {
         return current % 10;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int c = getFibonacciLastDigitNaive(n);
-        System.out.println(c);
-    }
-
-
-    public static long fibonacciRecursion(int n){
-        if (n <= 1)
-            return 1;
-        else
-            return fibonacciRecursion(n - 1) + fibonacciRecursion(n - 2);
+    public static int getLastDigitFibonacci(int n){
+        int F1 = 0;
+        int F2 = 1;
+        int tmp = 0;
+        for (int i = 2; i <= n; i++){
+            tmp = F2;
+            F2 = (F2 + F1) % 10;
+            F1 = tmp;
+        }
+        if (n == 0){
+            return F1;
+        }
+        return F2;
     }
 
     public static BigInteger fibonacciLoop(int n){
@@ -49,18 +49,10 @@ public class FibonacciLastDigit {
         return F2;
     }
 
-    public static BigInteger lastDigitFibonacciLoop(int n){
-        BigInteger F1 = new BigInteger("0");
-        BigInteger F2 = new BigInteger("1");
-        BigInteger tmp = new BigInteger("0");
-        for (int i = 2; i <= n; i++){
-            tmp = F2;
-            F2 = F2.add(F1).remainder(BigInteger.TEN);
-            F1 = tmp;
-        }
-        if (n == 0){
-            return F1;
-        }
-        return F2;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int c = getLastDigitFibonacci(n);
+        System.out.println(c);
     }
 }

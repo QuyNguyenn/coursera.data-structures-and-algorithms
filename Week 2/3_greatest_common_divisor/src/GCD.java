@@ -14,15 +14,6 @@ public class GCD {
         return current_gcd;
     }
 
-    public static void main(String args[]) {
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-
-        System.out.println(gcd_naive(a, b));
-    }
-
-
     public static long euclidAlgorithmRecursion(long a, long b){
         long m = Math.max(a, b);
         long n = Math.min(a, b);
@@ -58,5 +49,13 @@ public class GCD {
             n = Math.min(tmp - n, n);
         }
         return m;
+    }
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+
+        System.out.println(euclidAlgorithmRecursion((long) a, (long) b));
     }
 }
