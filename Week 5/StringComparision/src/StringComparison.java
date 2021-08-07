@@ -74,9 +74,9 @@ public class StringComparison {
         String s1 = "EDITING";
         String s2 = "DISTANCE";
         int[][] a = editDistance(s1, s2);
-        for (int i = 0; i < a.length; i++) {
+        for (int[] ints : a) {
             for (int j = 0; j < a[0].length; j++) {
-                System.out.print(a[i][j] + "\t");
+                System.out.print(ints[j] + "\t");
             }
             System.out.println("");
         }
