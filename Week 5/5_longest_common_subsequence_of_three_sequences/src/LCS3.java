@@ -2,7 +2,7 @@ import java.util.*;
 
 public class LCS3 {
 
-    private static int[][][] editDistance(int[] a, int[] b, int[] c) {
+    private static int[][][] editDistance(long[] a, long[] b, long[] c) {
         int xMax = a.length + 1;
         int yMax = b.length + 1;
         int zMax = c.length + 1;
@@ -48,28 +48,37 @@ public class LCS3 {
         return arr;
     }
 
-    private static int lcs3(int[] a, int[] b, int[] c) {
+    private static int lcs3(long[] a, long[] b, long[] c, int[][][] edit, int i, int j, int k) {
+        if (i == 0 && j == 0 && k == 0) {
+            return 0;
+        }
+        int[] ls = {0, 0, 0, 0, 0, 0, 0};
+        if (i > 0 && j > 0 && k > 0 && a[i - 1] == b[j - 1] && a[i - 1] == c[k - 1] && edit[i][j][k] == edit[i - 1][j - 1][k - 1]) {
+            ls[0] = 1 + lcs3(a, b, c, edit, i - 1, j - 1, k - 1);
+        }
         return editDistance(a, b, c)[a.length][b.length][c.length];
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int an = scanner.nextInt();
-        int[] a = new int[an];
+        long[] a = new long[an];
         for (int i = 0; i < an; i++) {
             a[i] = scanner.nextInt();
         }
         int bn = scanner.nextInt();
-        int[] b = new int[bn];
+        long[] b = new long[bn];
         for (int i = 0; i < bn; i++) {
             b[i] = scanner.nextInt();
         }
         int cn = scanner.nextInt();
-        int[] c = new int[cn];
+        long[] c = new long[cn];
         for (int i = 0; i < cn; i++) {
             c[i] = scanner.nextInt();
         }
-        System.out.println(lcs3(a, b, c));
+
+        int[][][] edit = editDistance(a, b, c);
+        System.out.println(lcs3(a, b, c, edit, an, bn, cn));
     }
 }
 

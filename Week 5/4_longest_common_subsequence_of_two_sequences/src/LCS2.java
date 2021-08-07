@@ -2,20 +2,20 @@ import java.util.*;
 
 public class LCS2 {
 
-    private static int[][] editDistance(int[] a, int[] b) {
-        int na = a.length + 1;
-        int nb = b.length + 1;
+    private static int[][] editDistance(long[] a, long[] b) {
+        int xMax = a.length + 1;
+        int yMax = b.length + 1;
         int insertion, deletion, substitution, match;
-        int[][] array = new int[na][nb];
+        int[][] array = new int[xMax][yMax];
         array[0][0] = 0;
-        for (int i = 1; i < na; i++) {
+        for (int i = 1; i < xMax; i++) {
             array[i][0] = array[i - 1][0] + 1;
         }
-        for (int i = 1; i < nb; i++) {
+        for (int i = 1; i < yMax; i++) {
             array[0][i] = array[0][i - 1] + 1;
         }
-        for (int i = 1; i < na; i++) {
-            for (int j = 1; j < nb; j++) {
+        for (int i = 1; i < xMax; i++) {
+            for (int j = 1; j < yMax; j++) {
                 insertion = array[i - 1][j] + 1;
                 deletion = array[i][j - 1] + 1;
                 substitution = array[i - 1][j - 1] + 1;
@@ -38,7 +38,7 @@ public class LCS2 {
         return array;
     }
 
-    private static int lcs2(int[] a, int[] b, int[][] array, int i, int j) {
+    private static int lcs2(long[] a, long[] b, int[][] array, int i, int j) {
         if (i == 0 && j == 0) {
             return 0;
         }
@@ -64,21 +64,18 @@ public class LCS2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int[] a = new int[n];
+        long[] a = new long[n];
         for (int i = 0; i < n; i++) {
             a[i] = scanner.nextInt();
         }
 
         int m = scanner.nextInt();
-        int[] b = new int[m];
+        long[] b = new long[m];
         for (int i = 0; i < m; i++) {
             b[i] = scanner.nextInt();
         }
 
-        /*int[] a = {2, 7 ,8, 3};
-        int[] b = {5, 2, 8, 7};
-
-        for (int ints: a) {
+        /*for (int ints: a) {
             System.out.print(ints + "\t");
         }
         System.out.println("");

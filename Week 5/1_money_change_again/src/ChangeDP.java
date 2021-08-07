@@ -7,7 +7,7 @@ public class ChangeDP {
         for (int i = 1; i <= m; i++) {
             a[i] = Integer.MAX_VALUE;
             for (int j = 0; j < coins.length; j++) {
-                if (a[i] >= coins[j]) {
+                if (i >= coins[j]) {
                     a[i] = Math.min(a[i], a[i - coins[j]] + 1);
                 }
             }
