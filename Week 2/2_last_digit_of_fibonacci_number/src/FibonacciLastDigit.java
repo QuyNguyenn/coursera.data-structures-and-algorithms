@@ -18,7 +18,7 @@ public class FibonacciLastDigit {
         return current % 10;
     }
 
-    public static int getLastDigitFibonacci(int n){
+    public static int getFibonacciLastDigit(int n){
         int F1 = 0;
         int F2 = 1;
         int tmp = 0;
@@ -52,7 +52,7 @@ public class FibonacciLastDigit {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int c = getLastDigitFibonacci(n);
+        int c = getFibonacciLastDigit(n);
         System.out.println(c);
     }
 }

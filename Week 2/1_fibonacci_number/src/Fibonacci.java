@@ -9,6 +9,9 @@ public class Fibonacci {
     }
 
     public static long calc_fibLoop(int n){
+        if (n < 1){
+            return n;
+        }
         long F1 = 0;
         long F2 = 1;
         long tmp;
@@ -16,9 +19,6 @@ public class Fibonacci {
             tmp = F2;
             F2 = F1 + F2;
             F1 = tmp;
-        }
-        if (n == 0){
-            return 0;
         }
         return F2;
     }

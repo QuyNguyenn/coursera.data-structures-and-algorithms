@@ -66,6 +66,9 @@ public class Partition3 {
         for (int ints: A) {
             sum += ints;
         }
+        if (sum % 3 != 0) {
+            return 0;
+        }
         average = sum/3;
         int[][] tabulation = knapsack(A, 2 * average);
         if (tabulation[A.length][2 * average] == 2 * average) {
